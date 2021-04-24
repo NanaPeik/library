@@ -3,9 +3,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/library
-    username: postgresql
-    password: postgresql
+    url: jdbc:postgresql://localhost:5432/Library
+    username: postgres
+    password: postgres
   flyway:
     baseline-version: 1
     baseline-on-migrate: true
