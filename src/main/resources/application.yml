@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/Library
+    url: jdbc:postgresql://localhost:5432/library?currentSchema=public
     username: postgres
     password: postgres
   flyway:

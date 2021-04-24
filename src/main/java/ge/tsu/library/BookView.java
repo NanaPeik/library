@@ -1,11 +1,15 @@
 package ge.tsu.library;
 
+import java.util.Date;
+
 public class BookView {
 
   private String name;
   private String author;
-  private String publishedDate;
-  private String id;
+  private Date publishedDate;
+  private Integer id;
+  private String genre;
+  private int quantity;
 
   public String getName() {
     return name;
@@ -23,19 +27,35 @@ public class BookView {
     this.author = author;
   }
 
-  public String getPublishedDate() {
+  public Date getPublishedDate() {
     return publishedDate;
   }
 
-  public void setPublishedDate(String publishedDate) {
+  public void setPublishedDate(Date publishedDate) {
     this.publishedDate = publishedDate;
   }
 
-  public String getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(Integer id) {
     this.id = id;
+  }
+
+  public String getGenre() {
+    return genre;
+  }
+
+  public void setGenre(String genre) {
+    this.genre = genre;
+  }
+
+  public int getQuantity() {
+    return quantity;
+  }
+
+  public void setQuantity(int quantity) {
+    this.quantity = quantity;
   }
 }
