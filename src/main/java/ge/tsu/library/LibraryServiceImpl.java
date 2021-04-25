@@ -1,7 +1,11 @@
 package ge.tsu.library;
 
-import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -35,7 +39,11 @@ public class LibraryServiceImpl implements LibraryService {
           bookView.setAuthor(entry.getValue().toString());
           break;
         case "published_date":
-          bookView.setPublishedDate(Date.valueOf(entry.getValue().toString()));
+          try {
+            bookView.setPublishedDate(new SimpleDateFormat("yyyy-MM-dd").parse(entry.getValue().toString()));
+          } catch (ParseException e) {
+            e.printStackTrace();
+          }
           break;
         case "id":
           bookView.setId(Integer.parseInt(entry.getValue().toString()));
