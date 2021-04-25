@@ -43,7 +43,7 @@ public class SignInUpController {
 //    return "redirect:library";
   }
 
-  @RequestMapping(method = RequestMethod.POST, value = "/sign_in")
+  @RequestMapping(method = RequestMethod.POST, value = "/sign_up")
   public void signUp(@RequestParam String username, @RequestParam String password,
       HttpServletResponse httpServletResponse) {
 
