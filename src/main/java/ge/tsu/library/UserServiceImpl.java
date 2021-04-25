@@ -14,24 +14,26 @@ public class UserServiceImpl implements UserService{
   private JdbcTemplate jdbcTemplate;
 
   @Override
-  public List<UserView> getUsers() {
-    return jdbcTemplate
-        .queryForList("select * from book.user")
+  public UserView getUser(String userName, String password) {
+    List<UserView> userViewList=jdbcTemplate
+        .queryForList(String.format(
+            "select * from users.users where user_name='%s' and password='%s';",userName,password))
         .stream()
         .map(this::map)
         .collect(Collectors.toList());
-  }
-
-  @Override
-  public UserView getUser(String userName, String password) {
-    return jdbcTemplate.queryForObject(String.format(""
-        + "select * from users.users where user_name='%s' and password='%s';",userName,password),UserView.class);
+    if(!userViewList.isEmpty()){
+      return userViewList.get(0);
+    }
+    return null;
   }
 
   @Override
   public void registerUser(String userName, String password, String email) {
-    jdbcTemplate.execute("insert into user.user(id,user_name,password,email)"
-        + "values (UUID.randomUUID().toString(),userName,password,email)");
+    UserView userView=getUser(userName,password);
+    if(userView==null){
+      jdbcTemplate.execute(String.format("insert into users.users(user_name,password,email)"
+          + "values ('%s','%s','%s')",userName,password,email));
+    }
   }
 
   private UserView map(Map<String, Object> map) {

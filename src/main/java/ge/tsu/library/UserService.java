@@ -1,10 +1,6 @@
 package ge.tsu.library;
 
-import java.util.List;
-
 public interface UserService {
-
-  List<UserView> getUsers();
 
   UserView getUser(String userName, String password);
 
