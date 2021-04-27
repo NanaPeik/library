@@ -5,7 +5,7 @@ public class User {
   private String userName;
   private String password;
   private String email;
-  private String admin;
+  private String isAdmin;
 
   public String getUserName() {
     return userName;
@@ -31,11 +31,11 @@ public class User {
     this.email = email;
   }
 
-  public String getAdmin() {
-    return admin;
+  public String getIsAdmin() {
+    return isAdmin;
   }
 
-  public void setAdmin(String admin) {
-    this.admin = admin;
+  public void setIsAdmin(String isAdmin) {
+    this.isAdmin = isAdmin;
   }
 }
