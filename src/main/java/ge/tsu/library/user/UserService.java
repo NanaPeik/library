@@ -12,5 +12,5 @@ public interface UserService {
 
   void registerUser(String userName, String password, String email);
 
-  UserView updateUser(String userId, String name, String email, String isAdminUser);
+  void updateUser(String userId, String name, String email, String isAdminUser);
 }
