@@ -69,6 +69,11 @@ public class UserServiceImpl implements UserService {
     return getUserById(Integer.valueOf(userId));
   }
 
+  @Override
+  public void deleteUser(Integer userId) {
+    jdbcTemplate.execute(String.format("delete from users.users where id=%s;", userId));
+  }
+
   private UserView map(Map<String, Object> map) {
     UserView userView = new UserView();
     for (Map.Entry<String, Object> entry : map.entrySet()) {

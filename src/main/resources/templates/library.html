@@ -103,12 +103,14 @@
     <tr th:each="user: ${users}">
       <td>
         <form method="post" action="/edituserinformation">
-          <input type="submit" th:value="${user.id}" th:name="userid">
+          <input id="id" type="submit" th:value="${user.id}" th:name="userid">
         </form>
       </td>
       <td th:text="${user.userName}"></td>
       <td th:text="${user.email}"></td>
-      <td th:text="${user.isAdmin}"></td>
+      <td th:text="${user.isAdmin}">
+      </td>
+      <td><button th:if="!${user.isAdmin}" type="button" onclick="deleteUser()">Delete</button></td>
     </tr>
   </table>
 </div>
@@ -126,6 +128,13 @@
     }
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
+  }
+
+  function deleteUser(){
+    var userId = parseInt(document.getElementById("id").value)
+    return fetch('http://localhost:8080/users/'+userId, {
+      method: 'DELETE',
+    }).then(response => response.json())
   }
 </script>
 
