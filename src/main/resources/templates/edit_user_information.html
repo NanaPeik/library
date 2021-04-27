@@ -5,15 +5,15 @@
   <title>User Information</title>
 </head>
 <body>
-  <form action="/save" method="post" >
+  <form action="/users" method="post" >
     <label for="id">Id</label>
     <input type="text" th:name="id" id="id" th:value="${user.id}"><br>
     <label for="name">User Name</label>
     <input type="text" th:name="name" id="name" th:value="${user.userName}"><br>
     <label for="email">Email</label>
     <input type="text" th:name="email" id="email" th:value="${user.email}"><br><br>
-    <label for="admin">Admin</label>
-    <input type="text" th:name="admin" id="admin" th:value="${user.isAdmin}"><br><br>
+    <label for="isAdmin">Admin</label>
+    <input type="text" th:name="isAdmin" id="isAdmin" th:value="${user.isAdmin}"><br><br>
     <input type="submit" value="Submit">
   </form>
 </body>

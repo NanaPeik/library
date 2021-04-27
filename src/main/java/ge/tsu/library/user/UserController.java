@@ -1,9 +1,8 @@
 package ge.tsu.library.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -12,9 +11,10 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-  @PutMapping("/users/{userId}")
-  public UserView updateUser(@RequestBody User updateUser, @PathVariable Integer userId) {
-    return userService.updateUser(userId, updateUser);
+  @PostMapping("/users")
+  public UserView updateUser(@RequestParam String name, @RequestParam String email,
+    @RequestParam String id, @RequestParam String isAdmin) {
+    return userService.updateUser(id, name, email, isAdmin);
   }
 
 }
