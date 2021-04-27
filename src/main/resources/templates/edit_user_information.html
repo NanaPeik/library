@@ -7,13 +7,13 @@
 <body>
   <form action="/save" method="post" >
     <label for="id">Id</label>
-    <input type="text" th:name="id" id="id" th:text="${user.id}"><br>
+    <input type="text" th:name="id" id="id" th:value="${user.id}"><br>
     <label for="name">User Name</label>
-    <input type="text" th:name="name" id="name" th:text="${user.userName}"><br>
+    <input type="text" th:name="name" id="name" th:value="${user.userName}"><br>
     <label for="email">Email</label>
-    <input type="text" th:name="email" id="email" th:text="${user.email}"><br><br>
+    <input type="text" th:name="email" id="email" th:value="${user.email}"><br><br>
     <label for="admin">Admin</label>
-    <input type="text" th:name="admin" id="admin" th:text="${user.isAdmin}"><br><br>
+    <input type="text" th:name="admin" id="admin" th:value="${user.isAdmin}"><br><br>
     <input type="submit" value="Submit">
   </form>
 </body>
