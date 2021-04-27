@@ -67,8 +67,8 @@
 <h2>Library</h2>
 
 <div class="tab">
-  <button class="tablinks" onclick="openCity('Library')">Library</button>
-  <button class="tablinks" onclick="openCity('Users')" th:if="${users != null}">Users</button>
+  <button class="tablinks" onclick="openCity(event,'Library')">Library</button>
+  <button class="tablinks" onclick="openCity(event,'Users')" th:if="${users != null}">Users</button>
 </div>
 
 <div id="Library" class="tabcontent">
@@ -114,7 +114,7 @@
 </div>
 
 <script>
-  function openCity(cityName) {
+  function openCity(evt,cityName) {
     let i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -125,6 +125,7 @@
       tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
     document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
   }
 </script>
 

@@ -35,10 +35,4 @@ public class BookController {
     modelAndView.addObject("books", bookService.getBooks());
     return modelAndView;
   }
-
-  @RequestMapping(method = RequestMethod.POST, value = "/save")
-  public String saveUserChanges() {
-    //save changes in dataBase
-    return "redirect:library";
-  }
 }
