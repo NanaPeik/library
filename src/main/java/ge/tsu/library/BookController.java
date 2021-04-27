@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,15 +36,15 @@ public class BookController {
     return modelAndView;
   }
 
-  @GetMapping(value = "/edituserinformation")
-  public ModelAndView signUp() {
+  @RequestMapping(method = RequestMethod.POST, value = "/edituserinformation")
+  public ModelAndView signUp(@RequestParam String userid) {
     ModelAndView modelAndView = new ModelAndView("edit_user_information");
-//    modelAndView.addObject("user",userService.getUserById(Integer.parseInt(userid)));
+    modelAndView.addObject("user",userService.getUserById(Integer.parseInt(userid)));
     return modelAndView;
   }
 
-  @RequestMapping(method = RequestMethod.POST,value = "/save")
-  public String saveUserChanges(){
+  @RequestMapping(method = RequestMethod.POST, value = "/save")
+  public String saveUserChanges() {
     //save changes in dataBase
     return "redirect:library";
   }

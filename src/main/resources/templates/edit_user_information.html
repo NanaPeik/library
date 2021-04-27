@@ -2,18 +2,18 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>User Information</title>
 </head>
 <body>
-  <form action="/save" method="post">
+  <form action="/save" method="post" >
     <label for="id">Id</label>
-    <input type="text" name="gender" id="id" value="${user.id}"><br>
+    <input type="text" th:name="id" id="id" th:text="${user.id}"><br>
     <label for="name">User Name</label>
-    <input type="text" name="gender" id="name" value="${user.userName}"><br>
+    <input type="text" th:name="name" id="name" th:text="${user.userName}"><br>
     <label for="email">Email</label>
-    <input type="text" name="gender" id="email" value="${user.email}"><br><br>
+    <input type="text" th:name="email" id="email" th:text="${user.email}"><br><br>
     <label for="admin">Admin</label>
-    <input type="text" name="gender" id="admin" value="${user.admin}"><br><br>
+    <input type="text" th:name="admin" id="admin" th:text="${user.admin}"><br><br>
     <input type="submit" value="Submit">
   </form>
 </body>
