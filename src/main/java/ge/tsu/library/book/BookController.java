@@ -1,11 +1,11 @@
-package ge.tsu.library;
+package ge.tsu.library.book;
 
+import ge.tsu.library.user.UserService;
 import java.sql.SQLException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class BookController {
 
   @Autowired
-  private LibraryService bookService;
+  private BookService bookService;
   @Autowired
   private UserService userService;
 
@@ -33,13 +33,6 @@ public class BookController {
       }
     }
     modelAndView.addObject("books", bookService.getBooks());
-    return modelAndView;
-  }
-
-  @RequestMapping(method = RequestMethod.POST, value = "/edituserinformation")
-  public ModelAndView signUp(@RequestParam String userid) {
-    ModelAndView modelAndView = new ModelAndView("edit_user_information");
-    modelAndView.addObject("user",userService.getUserById(Integer.parseInt(userid)));
     return modelAndView;
   }
 

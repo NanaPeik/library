@@ -1,5 +1,7 @@
 package ge.tsu.library;
 
+import ge.tsu.library.user.UserService;
+import ge.tsu.library.user.UserView;
 import java.sql.SQLException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -36,7 +38,7 @@ public class SignInUpController {
     return "redirect:signin";
   }
   @RequestMapping(method = RequestMethod.POST, value = "/signup")
-  public String signUp(@RequestParam String user, @RequestParam String pass,
+  public String registerUser(@RequestParam String user, @RequestParam String pass,
       @RequestParam String email, @RequestParam String repeatPass) {
     if(!repeatPass.equals(pass)){
       return "redirect:signup";
@@ -53,6 +55,13 @@ public class SignInUpController {
   @RequestMapping(method = RequestMethod.GET, value = "/signin")
   public ModelAndView signIn() {
     return new ModelAndView("sign_in");
+  }
+
+  @RequestMapping(method = RequestMethod.POST, value = "/edituserinformation")
+  public ModelAndView editUser(@RequestParam String userid) {
+    ModelAndView modelAndView = new ModelAndView("edit_user_information");
+    modelAndView.addObject("user",userService.getUserById(Integer.parseInt(userid)));
+    return modelAndView;
   }
 
 }

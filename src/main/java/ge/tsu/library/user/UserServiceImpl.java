@@ -1,4 +1,4 @@
-package ge.tsu.library;
+package ge.tsu.library.user;
 
 import java.util.List;
 import java.util.Map;

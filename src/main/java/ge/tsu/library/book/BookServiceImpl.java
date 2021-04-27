@@ -1,11 +1,10 @@
-package ge.tsu.library;
+package ge.tsu.library.book;
 
+import ge.tsu.library.book.BookService;
+import ge.tsu.library.book.BookView;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -14,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LibraryServiceImpl implements LibraryService {
+public class BookServiceImpl implements BookService {
 
   @Autowired
   private JdbcTemplate jdbcTemplate;

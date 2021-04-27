@@ -1,11 +1,28 @@
-package ge.tsu.library;
+package ge.tsu.library.user;
 
-public class User {
+public class UserView {
 
+  private String id;
   private String userName;
   private String password;
   private String email;
   private String isAdmin;
+
+  public String isAdmin() {
+    return isAdmin;
+  }
+
+  public void setAdmin(String admin) {
+    isAdmin = admin;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
 
   public String getUserName() {
     return userName;
@@ -29,13 +46,5 @@ public class User {
 
   public void setEmail(String email) {
     this.email = email;
-  }
-
-  public String getIsAdmin() {
-    return isAdmin;
-  }
-
-  public void setIsAdmin(String isAdmin) {
-    this.isAdmin = isAdmin;
   }
 }
