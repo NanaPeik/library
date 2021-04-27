@@ -11,4 +11,6 @@ public interface UserService {
   List<UserView> getUsers();
 
   void registerUser(String userName, String password, String email);
+
+  UserView updateUser(Integer userId, User updateUser);
 }
