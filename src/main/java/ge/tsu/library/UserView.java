@@ -1,10 +1,20 @@
 package ge.tsu.library;
 
 public class UserView {
+
   private String id;
   private String userName;
   private String password;
   private String email;
+  private String isAdmin;
+
+  public String isAdmin() {
+    return isAdmin;
+  }
+
+  public void setAdmin(String admin) {
+    isAdmin = admin;
+  }
 
   public String getId() {
     return id;

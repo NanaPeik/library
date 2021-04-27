@@ -28,6 +28,30 @@ public class UserServiceImpl implements UserService{
   }
 
   @Override
+  public UserView getUserById(int id) {
+    List<UserView> userViewList=jdbcTemplate
+        .queryForList(String.format(
+            "select * from users.users where id='%s';",id))
+        .stream()
+        .map(this::map)
+        .collect(Collectors.toList());
+    if(!userViewList.isEmpty()){
+      return userViewList.get(0);
+    }
+    return null;
+  }
+
+  @Override
+  public List<UserView> getUsers() {
+    return jdbcTemplate
+        .queryForList(String.format(
+            "select * from users.users;"))
+        .stream()
+        .map(this::map)
+        .collect(Collectors.toList());
+  }
+
+  @Override
   public void registerUser(String userName, String password, String email) {
     UserView userView=getUser(userName,password);
     if(userView==null){
@@ -51,6 +75,9 @@ public class UserServiceImpl implements UserService{
           break;
         case "password":
           userView.setPassword(entry.getValue().toString());
+          break;
+        case "is_admin":
+          userView.setAdmin(entry.getValue().toString());
           break;
       }
     }

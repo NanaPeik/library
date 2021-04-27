@@ -1,44 +1,130 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Library</title>
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      font-family: Arial;
+    }
 
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
+    /* Style the tab */
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
 
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
+    /* Style the buttons inside the tab */
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
 </head>
 <body>
-<table>
+
+<h2>Library</h2>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity('Library')">Library</button>
+  <button class="tablinks" onclick="openCity('Users')" th:if="${users != null}">Users</button>
+</div>
+
+<div id="Library" class="tabcontent">
+  <table>
     <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Author</th>
-        <th>Published Date</th>
-        <th>Genre</th>
-        <th>Quantity</th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Author</th>
+      <th>Published Date</th>
+      <th>Genre</th>
+      <th>Quantity</th>
     </tr>
     <tr th:each="book: ${books}">
-        <td th:text="${book.id}"></td>
-        <td th:text="${book.name}"></td>
-        <td th:text="${book.author}"></td>
-        <td th:text="${book.publishedDate}"></td>
-        <td th:text="${book.genre}"></td>
-        <td th:text="${book.quantity}"></td>
+      <td th:text="${book.id}"></td>
+      <td th:text="${book.name}"></td>
+      <td th:text="${book.author}"></td>
+      <td th:text="${book.publishedDate}"></td>
+      <td th:text="${book.genre}"></td>
+      <td th:text="${book.quantity}"></td>
     </tr>
-</table>
+  </table>
+</div>
+
+<div id="Users" class="tabcontent">
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>User Name</th>
+      <th>Email</th>
+      <th>Admin</th>
+      <th>Edit</th>
+    </tr>
+    <tr th:each="user: ${users}">
+      <td th:text="${user.id}"></td>
+      <td th:text="${user.userName}"></td>
+      <td th:text="${user.email}"></td>
+      <td th:text="${user.isAdmin}"></td>
+      <td><a href="edituserinformation">Edit</a></td>
+    </tr>
+  </table>
+</div>
+
+<script>
+  function openCity(cityName) {
+    let i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+  }
+</script>
+
 </body>
 </html>

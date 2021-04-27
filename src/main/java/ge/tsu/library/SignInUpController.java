@@ -1,8 +1,8 @@
 package ge.tsu.library;
 
 import java.sql.SQLException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,6 @@ public class SignInUpController {
   @Autowired
   private UserService userService;
 
-  //TODO add check cookies
   @GetMapping("/")
   public ModelAndView getBooks() throws SQLException {
     return new ModelAndView("sign_in");
@@ -29,6 +28,9 @@ public class SignInUpController {
 
     UserView userView = userService.getUser(username, password);
     if (userView != null) {
+      Cookie cookie = new Cookie("user_is_admin", userView.isAdmin());
+      cookie.setHttpOnly(true);
+      httpServletResponse.addCookie(cookie);
       return "redirect:library";
     }
     return "redirect:signin";

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <form action="/save" method="post">
+    <label for="id">Id</label>
+    <input type="text" name="gender" id="id" value="${user.id}"><br>
+    <label for="name">User Name</label>
+    <input type="text" name="gender" id="name" value="${user.userName}"><br>
+    <label for="email">Email</label>
+    <input type="text" name="gender" id="email" value="${user.email}"><br><br>
+    <label for="admin">Admin</label>
+    <input type="text" name="gender" id="admin" value="${user.admin}"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
