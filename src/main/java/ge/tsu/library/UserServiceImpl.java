@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService {
   public UserView updateUser(Integer userId, User updateUser) {
     jdbcTemplate.execute(String.format("update users.users set user_name='%s', password='%s',"
         + " email='%s', is_admin='%s' where id=%s;", updateUser.getUserName(),
-      updateUser.getPassword(), updateUser.getEmail(), Boolean.valueOf(updateUser.getAdmin()),
+      updateUser.getPassword(), updateUser.getEmail(), Boolean.valueOf(updateUser.getIsAdmin()),
       userId));
     return getUserById(userId);
   }
