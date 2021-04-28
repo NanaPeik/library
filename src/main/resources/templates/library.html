@@ -110,7 +110,7 @@
       <td th:text="${user.email}"></td>
       <td th:text="${user.isAdmin}">
       </td>
-      <td><button th:if="!${user.isAdmin}" type="button" onclick="deleteUser()">Delete</button></td>
+      <td><button th:if="!${user.isAdmin}" type="button" th:onclick="javascript:deleteUser([[${user.id}]]);">Delete</button></td>
     </tr>
   </table>
 </div>
@@ -130,11 +130,13 @@
     evt.currentTarget.className += " active";
   }
 
-  function deleteUser(){
-    var userId = parseInt(document.getElementById("id").value)
-    return fetch('http://localhost:8080/users/'+userId, {
-      method: 'DELETE',
+  function deleteUser(va){
+
+    fetch('http://localhost:8080/users/'+parseInt(va), {
+      method: 'delete',
     }).then(response => response.json())
+    location.replace("http://localhost:8080/library")
+
   }
 </script>
 

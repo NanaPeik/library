@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public void deleteUser(Integer userId) {
-    jdbcTemplate.execute(String.format("delete from users.users where id=%s;", userId));
+    jdbcTemplate.update(String.format("delete from users.users where id=%s;", userId));
   }
 
   private UserView map(Map<String, Object> map) {
